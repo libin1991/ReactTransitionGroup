@@ -28,14 +28,6 @@ export default class Transition extends React.Component {
         }
     }
 
-    // componentWillMount() {
-    //     console.log('>>>>> componentWillMount')
-    // }
-
-    // componentDidMount() {
-    //     console.log('>>>>> componentDidMount')
-    // }
-
     componentWillReceiveProps(nextProps) {
         if (!this.props.show && nextProps.show) {
             this.setState({
@@ -51,14 +43,6 @@ export default class Transition extends React.Component {
             })
         }
     }
-
-    // componentWillUpdate() {
-    //     console.log('>>>>> componentWillUpdate')
-    // }
-
-    // componentDidUpdate() {
-    //     console.log('>>>>> componentDidUpdate')
-    // }
 
     componentWillUnmount() {
         console.log('>>>>> componentWillUnmount')
@@ -98,13 +82,11 @@ export default class Transition extends React.Component {
     }
 
     render() {
-        // console.log('>>>>> render components')
         const { visible } = this.state
         const { children, ...inProps } = this.props
         const style = { display: visible ? '' : 'none' }
         const child = React.Children.only(children)
         const childProps = { ...inProps, className: this.getClasses(), style: style, onAnimationEnd: this.animationEnd, ref: (el) => { this.refs = el } }
-
 
         delete childProps.onEnter
         delete childProps.onLeave

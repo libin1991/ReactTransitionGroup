@@ -30,7 +30,6 @@ export default class TransitionGroup extends React.Component {
         console.log('newCount:', newCount)
 
         if (newCount > oldCount) {
-            // console.log('+++++++', newCount)
             Children.forEach(newChildren, (child, key) => {
                 if (oldChildren[key]) {
                     newChildren[key] = oldChildren[key]
@@ -39,12 +38,9 @@ export default class TransitionGroup extends React.Component {
                     newChildren[key] = cloneElement(child, {show: true, ...inProps})
                 }
             })
-
             const children = newChildren
             this.setState({ children })
-
         } else {
-            // console.log('-------', newCount)
             Children.forEach(oldChildren, (child, key) => {
                 if (!newChildren[key]) {
                     const { show, onLeave, ...inProps } = child.props
